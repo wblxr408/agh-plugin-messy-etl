@@ -1,0 +1,127 @@
+{
+  "name": "@wblxr408/messy-etl-runtime",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=24.10"
+  },
+  "exports": "./index.mjs",
+  "files": [
+    "*.mjs",
+    "skills",
+    "client",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "agnes": {
+    "provides": [
+      "tool",
+      "skills",
+      "ui",
+      "service",
+      "bundle"
+    ],
+    "plugins": [
+      {
+        "id": "ext:@wblxr408/messy-etl-runtime/main",
+        "export": "main",
+        "apiRange": "^5.0.0",
+        "inject": [
+          "tools",
+          "services",
+          "skills"
+        ],
+        "optionalInject": [
+          "skills"
+        ],
+        "services": [
+          "fde.etl.batches",
+          "fde.etl.patch",
+          "fde.etl.commit"
+        ],
+        "capabilities": {
+          "store": true,
+          "ui": true,
+          "tools": {
+            "prefix": "fde_etl_",
+            "names": [
+              "fde_etl_parse_spreadsheet",
+              "fde_etl_parse_document",
+              "fde_etl_patch_row",
+              "fde_etl_commit_batch",
+              "fde_etl_list_batches"
+            ]
+          }
+        },
+        "metadata": {
+          "displayName": "Messy Document & Spreadsheet ETL",
+          "summary": "Extract messy multi-header spreadsheets and OCR invoices with exact cell/line provenance, confidence flagging, and split-pane review.",
+          "description": "Parses real-world spreadsheets with preamble banners, merged group cells, Chinese/English headers, accounting negatives, and summary rows; tracks per-field confidence and provenance until reconciled and committed.",
+          "locales": {
+            "zh-CN": {
+              "displayName": "脏文档与复杂表格结构化 ETL",
+              "summary": "带单元格/行号溯源、置信度标红与人工对账修正的非标表格/单据结构化插件。",
+              "description": "支持跳过表头前导说明行、合并单元格向下填充、会计负数与中英文列名映射，自动拆分合计行并检验单价数量与总额，所有低置信度字段须经复核修正后才允许提交。"
+            }
+          }
+        }
+      }
+    ],
+    "hostProvidedExternals": {
+      "@agnes/plugin-runtime": "0.0.0",
+      "@agnes/extension-api": "^5.0.0",
+      "@sinclair/typebox": "0.34.33"
+    },
+    "clientDescriptors": [
+      {
+        "rowId": "ext:@wblxr408/messy-etl-runtime/main",
+        "path": "./client/agnes.client.json"
+      }
+    ],
+    "bundles": {
+      "etl": {
+        "presets": {
+          "etl": {
+            "name": "etl",
+            "extends": "standard"
+          }
+        },
+        "profile": {
+          "tools": [
+            "fde_etl_parse_spreadsheet",
+            "fde_etl_parse_document",
+            "fde_etl_patch_row",
+            "fde_etl_commit_batch",
+            "fde_etl_list_batches"
+          ],
+          "skills": [
+            "fde-messy-etl"
+          ]
+        },
+        "launch": {
+          "title": {
+            "en": "Messy Document & Spreadsheet ETL",
+            "zh-CN": "非标单据结构化助手"
+          },
+          "description": {
+            "en": "Parse messy customer spreadsheets or OCR invoices, flag uncertain cells, and reconcile totals.",
+            "zh-CN": "解析非标客户表格或 OCR 单据，标红低置信度字段并核对总额。"
+          },
+          "preset": "etl",
+          "pages": [
+            "messy-etl-review"
+          ],
+          "prompt": {
+            "text": {
+              "en": "List staged ETL batches and explain which rows need human review before commit.",
+              "zh-CN": "列出待复核的 ETL 批次，并说明哪些行需要人工确认后才能提交。"
+            },
+            "mode": "draft"
+          }
+        }
+      }
+    }
+  }
+}

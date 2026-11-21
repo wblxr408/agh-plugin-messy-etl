@@ -1,0 +1,35 @@
+{
+  "client": {
+    "id": "messy-etl-review",
+    "lifetime": "profile",
+    "entry": "./index.js",
+    "styles": [],
+    "slots": [],
+    "services": [
+      "fde.etl.batches",
+      "fde.etl.patch",
+      "fde.etl.commit"
+    ],
+    "projections": [],
+    "publicConfig": {
+      "label": "Messy Document & Spreadsheet ETL Review"
+    },
+    "homeEntries": [
+      {
+        "id": "messy-etl-review",
+        "placement": "secondary",
+        "navigation": {
+          "title": "Messy ETL Review",
+          "titles": {
+            "zh-CN": "非标单据核对台"
+          },
+          "icon": "plugin",
+          "order": 43
+        }
+      }
+    ],
+    "assets": [
+      "./etl-export.mjs"
+    ]
+  }
+}

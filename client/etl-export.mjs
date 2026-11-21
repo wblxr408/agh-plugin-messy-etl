@@ -1,4 +1,4 @@
-const columns = ['orderId', 'vendor', 'item', 'quantity', 'unitPriceCents', 'amountCents']
+const columns = ['orderId', 'vendor', 'item', 'qty', 'unitPriceCents', 'amountCents']
 
 function cell(value) {
   if (typeof value === 'number' && Number.isFinite(value)) return String(value)

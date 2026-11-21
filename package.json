@@ -1,6 +1,6 @@
 {
   "name": "@wblxr408/messy-etl-runtime",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "license": "Apache-2.0",
   "engines": {

@@ -1,6 +1,6 @@
 {
   "name": "@wblxr408/messy-etl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "Apache-2.0",
   "description": "Configuration bundle for an independently authorized runtime.",
   "repository": {

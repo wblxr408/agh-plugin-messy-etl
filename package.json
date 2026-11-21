@@ -1,0 +1,65 @@
+{
+  "name": "@wblxr408/messy-etl",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "description": "Configuration bundle for an independently authorized runtime.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wblxr408/agh-plugin-messy-etl"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "agh.market.json"
+  ],
+  "agnes": {
+    "provides": [
+      "bundle"
+    ],
+    "metadata": {
+      "displayName": "Document Reconciliation",
+      "summary": "Configuration bundle for an independently authorized runtime.",
+      "description": "Use the runtime agent to parse CSV or TSV, review uncertain rows, confirm reconciliation and export CSV.",
+      "locales": {
+        "zh-CN": {
+          "displayName": "单据核对台",
+          "summary": "配置 Bundle，配合单独配置和授权的运行组件使用。",
+          "description": "在运行组件的智能体中清洗 CSV 或 TSV，复核低置信度行，确认对账并导出 CSV。"
+        }
+      }
+    },
+    "bundles": {
+      "workflow": {
+        "profile": {
+          "toolPolicy": {
+            "readOnly": true
+          }
+        },
+        "presets": {
+          "messy-etl": {
+            "name": "messy-etl",
+            "extends": "standard"
+          }
+        },
+        "launch": {
+          "title": {
+            "en": "Document Reconciliation Setup",
+            "zh-CN": "单据核对台配置说明"
+          },
+          "description": {
+            "en": "Use the runtime agent to parse CSV or TSV, review uncertain rows, confirm reconciliation and export CSV.",
+            "zh-CN": "在运行组件的智能体中清洗 CSV 或 TSV，复核低置信度行，确认对账并导出 CSV。"
+          },
+          "preset": "messy-etl",
+          "prompt": {
+            "mode": "draft",
+            "text": {
+              "en": "Use the runtime agent to parse CSV or TSV, review uncertain rows, confirm reconciliation and export CSV.",
+              "zh-CN": "请说明如何使用已经单独安装的单据核对台运行组件。在运行组件的智能体中清洗 CSV 或 TSV，复核低置信度行，确认对账并导出 CSV。"
+            }
+          }
+        }
+      }
+    }
+  }
+}

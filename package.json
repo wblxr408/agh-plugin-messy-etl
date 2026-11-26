@@ -1,6 +1,6 @@
 {
   "name": "@wblxr408/messy-etl-runtime",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "license": "Apache-2.0",
   "engines": {
@@ -80,6 +80,16 @@
         "path": "./client/agnes.client.json"
       }
     ],
+    "application": {
+      "id": "messy-etl-review",
+      "presentation": {
+        "navigation": {
+          "entries": [
+            "@wblxr408/messy-etl-runtime#messy-etl-review"
+          ]
+        }
+      }
+    },
     "bundles": {
       "etl": {
         "presets": {
